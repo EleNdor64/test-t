@@ -1,4 +1,4 @@
-Start App
--npm i 
--npm run build
--npm run dev
+Start App ;
+-npm i ;
+-npm run build;
+-npm run dev;
