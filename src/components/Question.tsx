@@ -26,7 +26,7 @@ const QuestionComponent = ({
 
         onAnswerChange(updatedAnswers);
     };
-
+    
     return (
         <div className="question">
             <h2>{question.title}</h2>
@@ -41,7 +41,7 @@ const QuestionComponent = ({
                                     value={option.id}
                                     checked={selectedAnswers === option.id}
                                     onChange={() =>
-                                    handleSingleSelect(option.id)
+                                        handleSingleSelect(option.id)
                                     }
                                 />
                                 {option.text}

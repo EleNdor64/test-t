@@ -17,10 +17,12 @@ const SurveyPage = ({
     onNext,
     onPrevious,
 }: SurveyPageProps) => {
-    
     const currentQuestion = survey.questions[surveyState.currentQuestionIndex];
     const isLastQuestion =
         surveyState.currentQuestionIndex === survey.questions.length - 1;
+    const selectedAnswers =
+        surveyState.answers[currentQuestion.id] ||
+        (currentQuestion.type === "single" ? "" : []);
 
     return (
         <div className="survey-page">
@@ -28,10 +30,7 @@ const SurveyPage = ({
 
             <Question
                 question={currentQuestion}
-                selectedAnswers={
-                    surveyState.answers[currentQuestion.id] ||
-                    (currentQuestion.type === "single" ? "" : [])
-                }
+                selectedAnswers={selectedAnswers}
                 onAnswerChange={(answer) =>
                     onAnswerChange(currentQuestion.id, answer)
                 }
@@ -43,6 +42,7 @@ const SurveyPage = ({
                 onNext={onNext}
                 onPrevious={onPrevious}
                 isLastQuestion={isLastQuestion}
+                selectedAnswers={selectedAnswers}
             />
         </div>
     );

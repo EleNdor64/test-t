@@ -6,6 +6,7 @@ interface SurveyControlsProps {
     onNext: () => void;
     onPrevious?: () => void;
     isLastQuestion: boolean;
+    selectedAnswers: string | string[];
 }
 
 const SurveyControls = ({
@@ -14,8 +15,8 @@ const SurveyControls = ({
     onNext,
     onPrevious,
     isLastQuestion,
+    selectedAnswers,
 }: SurveyControlsProps) => {
-    
     return (
         <div className="survey-controls">
             <ProgressBar current={currentQuestion} total={totalQuestions} />
@@ -23,7 +24,10 @@ const SurveyControls = ({
                 {onPrevious && currentQuestion > 0 && (
                     <button onClick={onPrevious}>Назад</button>
                 )}
-                <button onClick={onNext}>
+                <button
+                    onClick={onNext}
+                    disabled={selectedAnswers.length === 0}
+                >
                     {isLastQuestion ? "Завершить" : "Далее"}
                 </button>
             </div>
